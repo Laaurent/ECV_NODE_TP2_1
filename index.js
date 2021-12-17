@@ -1,35 +1,8 @@
-exports.stringToSlug = function (str) {
-   str = str.replace(/^\s+|\s+$/g, ""); // trim
-   str = str.toLowerCase();
+import { stringToSlug, capitalizeString } from "./string.js";
+import { pickRandomFag, sortArray } from "./array.js";
 
-   // remove accents, swap ñ for n, etc
-   var from = "åàáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
-   var to = "aaaaaaeeeeiiiioooouuuunc------";
+export default { stringToSlug, capitalizeString, pickRandomFag, sortArray };
 
-   for (var i = 0, l = from.length; i < l; i++) {
-      str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
-   }
+console.log(capitalizeString("hello world"));
 
-   str = str
-      .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
-      .replace(/\s+/g, "-") // collapse whitespace and replace by -
-      .replace(/-+/g, "-"); // collapse dashes
-
-   return str;
-};
-exports.SortArray = function (array) {
-   return array.sort();
-};
-exports.capitalizeString = function (str) {
-   var splitStr = str.toLowerCase().split(" ");
-   for (var i = 0; i < splitStr.length; i++) {
-      // You do not need to check if i is larger than splitStr length, as your for does that for you
-      // Assign it back to the array
-      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-   }
-   // Directly return the joined string
-   return splitStr.join(" ");
-};
-exports.pickRandomFag = function (array) {
-   return array[Math.floor(Math.random() * array.length)];
-};
+console.log(pickRandomFag([1, 2, 3]));
