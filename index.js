@@ -6,3 +6,7 @@ export default { stringToSlug, capitalizeString, pickRandomFag, sortArray };
 console.log(capitalizeString("hello world"));
 
 console.log(pickRandomFag([1, 2, 3]));
+
+console.log(sortArray(["T", "A", "C"]));
+
+console.log(stringToSlug("heéèlloôö wöoôrld"));
